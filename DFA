@@ -1,0 +1,51 @@
+import numpy as np
+#0 1 2 3 4 5 6 7 8 9 
+inp = input("Give inputs ")
+inp = inp.split()
+#q0 q1 q2 f
+out=input('Give  States')
+out=out.split()
+#q0
+ini=str(input('Give initial state'))
+#f
+final=input('Give final states')
+final=final.split()
+n=len(out)
+table=[]
+for i in range(n):
+  tab=input('Give transition ')
+  tab=tab.split()
+  table.append(tab)
+exp=str(input('give expression'))
+# inp=['0','1','2','3','4','5','6','7','8','9']
+# out=['q0','q1','q2','f']
+# ini='q0'
+# final=['f']
+# table=[['f','q1','q2','f','q1','q2','f','q1','q2','f'],['q1','q2','f','q1','q2','f','q1','q2','f','q1'],['q2','f','q1','q2','f','q1','q2','f','q1','q2'],['f','q1','q2','f','q1','q2','f','q1','q2','f']]
+# exp=str("123")
+print(inp)
+print(out)
+print(ini)
+print(final)
+print(table)
+print(exp)
+start=0
+ng=0
+for z in exp:
+    for t in inp:
+        ng=ng+1
+        if(t==z):
+            print(z,'  ng is ',ng)
+            break
+    s=table[start][int(ng)-1]
+    print('row :', start, ' col', ng,'  answer is ',s)
+    ng=0
+    y=0
+    for i in out:
+        if(s==i):
+            start=y
+        y=y+1
+if(s in final):
+    print('Expression is allowed by language')
+else:
+    print('Expression not allowed')
